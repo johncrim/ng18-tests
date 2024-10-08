@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
 
+## Project Creation
+
+Created via:
+
+```bash
+yarn dlx --package @angular/cli ng new ng18-tests --package-manager=yarn --create-application=false --commit=false
+cd ng18-tests
+ng g application output-emit
+```
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
