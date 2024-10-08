@@ -1,0 +1,8 @@
+app-list {
+  display       : flex;
+  flex-direction: column;
+
+  &:focus {
+    outline: 2px solid gray;
+  }
+}
