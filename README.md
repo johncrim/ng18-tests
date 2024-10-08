@@ -9,9 +9,9 @@ Created via:
 ```bash
 yarn dlx --package @angular/cli ng new ng18-tests --package-manager=yarn --create-application=false --commit=false
 cd ng18-tests
-ng g application output-emit
+yarn set version berry
+ng g application (app name)
 ```
-
 
 ## Development server
 
