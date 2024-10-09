@@ -36,10 +36,38 @@ describe('model() emit', () => {
     expect(spectator.component.emitted).toEqual([3]);
   });
 
-  it('model input is emitted', () => {
+  it('@Input model.set() emits when changed after create', () => {
+    spectator = createHost(`<test-model [setModelValue]="initialValue" />`, {
+      hostProps: {
+        initialValue: null
+      }
+    });
+    expect(spectator.component.model()).toBe(null);
+    expect(spectator.component.emitted).toEqual([]);
+
+    spectator.setHostInput('initialValue', 2);
+    expect(spectator.component.model()).toBe(2);
+    expect(spectator.component.emitted).toEqual([2]);
+  });
+
+  it('model input is emitted (fails)', () => {
     spectator = createHost(`<test-model [model]="3" />`);
     expect(spectator.component.model()).toBe(3);
-    expect(spectator.component.emitted).toEqual([3]);
+    expect(spectator.component.emitted).toEqual([3]); // fails b/c model binding to regular object doesn't emit
+  });
+
+  it('model input emits when changed after create', () => {
+    spectator = createHost(`<test-model [model]="initialValue" />`, {
+      hostProps: {
+        initialValue: null
+      }
+    });
+    expect(spectator.component.model()).toBe(null);
+    expect(spectator.component.emitted).toEqual([]);
+
+    spectator.setHostInput('initialValue', 2);
+    expect(spectator.component.model()).toBe(2);
+    expect(spectator.component.emitted).toEqual([2]); // fails b/c model binding to regular object doesn't emit
   });
 
 });
